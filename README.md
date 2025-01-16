@@ -1,6 +1,7 @@
 # Project QRMagic
 
 QRMagic is a versatile application for generating and managing QR codes efficiently. Built with **Next.js** and styled using **Tailwind CSS**, it provides a seamless user experience for creating customized QR codes with ease.
+![Screenshot 2025-01-16 032027](https://github.com/user-attachments/assets/f387892d-1e6b-4513-9880-6f933e58eb7e)
 
 ## Features
 
