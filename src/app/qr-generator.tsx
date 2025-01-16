@@ -2,19 +2,17 @@
 
 import { useState } from "react"
 import { motion } from "framer-motion"
-import { CuboidIcon as Cube, Download } from 'lucide-react'
-import { Button } from "@/components/ui/ui/button"
-import { Input } from "@/components/ui/ui/input"
-import { Textarea } from "@/components/ui/ui/textarea"
-import { Card, CardContent } from "@/components/ui/ui/card"
-import { WelcomeScreen } from "@/components/ui/WelcomeScreen"
-import { QRCodeDisplay } from "@/components/ui/QRCodeDisplay"
+import { CuboidIcon as Cube } from 'lucide-react'
+import { Button } from "../components/ui/ui/button"
+import { Input } from "../components/ui/ui/input"
+import { Textarea } from "../components/ui/ui/textarea"
+import { Card, CardContent } from "../components/ui/ui/card"
+import { WelcomeScreen } from "../components/ui/WelcomeScreen"
 
 export default function QRGenerator() {
   const [userName, setUserName] = useState<string | null>(null)
   const [url, setUrl] = useState("")
   const [prompt, setPrompt] = useState("")
-  const [qrCodeData, setQRCodeData] = useState<string | null>(null)
 
   const suggestions = [
     "A city view with clouds",
@@ -25,18 +23,6 @@ export default function QRGenerator() {
 
   const handleNameSubmit = (name: string) => {
     setUserName(name)
-  }
-
-  const handleGenerate = () => {
-    // In a real application, this would call an API to generate the QR code
-    // For now, we'll just set some dummy data
-    setQRCodeData(`https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(url)}`)
-  }
-
-  const handleDownload = () => {
-    // In a real application, this would trigger the download of the QR code image
-    // For now, we'll just log a message
-    console.log("Downloading QR code...")
   }
 
   return (
@@ -117,24 +103,9 @@ export default function QRGenerator() {
                   <Button 
                     className="w-full bg-white text-purple-700 hover:bg-white/90"
                     size="lg"
-                    onClick={handleGenerate}
                   >
                     Generate
                   </Button>
-
-                  {qrCodeData && (
-                    <div className="mt-8 space-y-4">
-                      <QRCodeDisplay qrCodeData={qrCodeData} />
-                      <Button 
-                        className="w-full bg-green-500 text-white hover:bg-green-600"
-                        size="lg"
-                        onClick={handleDownload}
-                      >
-                        <Download className="w-4 h-4 mr-2" />
-                        Download QR Code
-                      </Button>
-                    </div>
-                  )}
                 </div>
               </CardContent>
             </Card>
